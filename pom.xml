@@ -16,11 +16,7 @@
     <repositories>
         <repository>
             <id>nukkit-repo</id>
-            <url>https://repo.nukkitx.com/snapshot</url>
-        </repository>
-        <repository>
-            <id>nukkitx-repo</id>
-            <url>https://repo.nukkitx.com/snapshot/</url>
+            <url>https://repo.nukkit.com/snapshot/</url>
         </repository>
     </repositories>
 

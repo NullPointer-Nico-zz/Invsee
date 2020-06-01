@@ -24,16 +24,17 @@ public class EnderInvseeCommand extends Command {
                     return true;
                 }
                 Player target = Server.getInstance().getPlayer(args[0]);
-                if(target.equals(sender)) {
-                    sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Du kannst diesen Command nicht auf dir selbst anwenden!");
-                    return true;
-                }
+
                 if(target == null) {
                     sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Der Spieler ist nicht Online oder Existiert nicht!");
+                } else if(target.equals(sender)) {
+                    sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Du kannst diesen Command nicht auf dir selbst anwenden!");
                 } else {
                     ChestFakeInventory ec = new ChestFakeInventory();
-                    ec.addListener(this::slotchange);
-                    ec.setName("§l§cEnderChest von " + target.getName());
+                    ec.addListener(event -> {
+                        event.setCancelled(true);
+                    });
+                    ec.setName("§l§cEnderChest von §l§a" + target.getName());
                     ec.setContents(target.getEnderChestInventory().getContents());
                     ((Player) sender).addWindow(ec);
                 }
@@ -43,14 +44,5 @@ public class EnderInvseeCommand extends Command {
         }
         return false;
     }
-
-    public void slotchange(FakeSlotChangeEvent event) {
-        if(event.getInventory() instanceof ChestFakeInventory) {
-            if(event.getInventory().getName().contains("§l§cEnderchets von ")) {
-                event.setCancelled(true);
-            }
-        }
-    }
-
 
 }

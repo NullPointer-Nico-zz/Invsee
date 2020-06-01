@@ -11,6 +11,7 @@ public class ECCommand extends Command implements Listener {
 
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {
+        sender.sendMessage("§l§cEC command ist noch in arbeit §l§5LG Developer Zockyyyy");
         return false;
     }
 }

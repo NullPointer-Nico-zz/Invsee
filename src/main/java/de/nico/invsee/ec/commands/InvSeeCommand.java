@@ -4,9 +4,11 @@ import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
+import cn.nukkit.inventory.InventoryType;
+import cn.nukkit.item.Item;
 import com.nukkitx.fakeinventories.inventory.DoubleChestFakeInventory;
-import com.nukkitx.fakeinventories.inventory.FakeInventoryListener;
-import com.nukkitx.fakeinventories.inventory.FakeSlotChangeEvent;
+import com.nukkitx.fakeinventories.inventory.FakeInventories;
+import com.nukkitx.fakeinventories.inventory.FakeInventory;
 
 public class InvSeeCommand extends Command {
     public InvSeeCommand() {
@@ -24,18 +26,18 @@ public class InvSeeCommand extends Command {
                 }
                 Player target = Server.getInstance().getPlayer(args[0]);
 
-                if(target.equals(sender)) {
-                    sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Du kannst diesen Command nicht bei dir selber anwenden");
-                    return true;
-                }
-
                 if(target == null) {
                     sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Der Spieler ist nicht online oder existiert nicht!");
+                    return true;
+                } else if(target.equals(sender)) {
+                    sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Du kannst diesen Command nicht bei dir selber anwenden");
                 } else {
                     DoubleChestFakeInventory inv = new DoubleChestFakeInventory();
-                    inv.addListener(this::change);
-                    inv.setName("§l§cInventar von " + target.getName());
                     inv.setContents(target.getInventory().getContents());
+                    inv.addListener(event -> {
+                        event.setCancelled(true);
+                    });
+                    inv.setName("§l§cInventar von §l§a" + target.getName());
                     ((Player) sender).addWindow(inv);
                 }
             }
@@ -45,11 +47,5 @@ public class InvSeeCommand extends Command {
         return true;
     }
 
-    public void change(FakeSlotChangeEvent event) {
-        if(event.getInventory() instanceof DoubleChestFakeInventory) {
-            if(event.getInventory().getName().contains("§l§cInventar von ")) {
-                event.setCancelled(true);
-            }
-        }
-    }
+
 }
