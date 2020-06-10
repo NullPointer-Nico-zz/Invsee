@@ -5,10 +5,9 @@ import cn.nukkit.Server;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import com.nukkitx.fakeinventories.inventory.ChestFakeInventory;
-import com.nukkitx.fakeinventories.inventory.FakeSlotChangeEvent;
+import com.nukkitx.fakeinventories.inventory.FakeInventories;
 
 public class EnderInvseeCommand extends Command {
-    byte chunck = 0;
 
     public EnderInvseeCommand() {
         super("inve", "Zeigt dir die Ec eines Spielers an!", "§l§cFaiv§l§agames §l§7| §l§4/inve <Spieler>");
@@ -30,13 +29,13 @@ public class EnderInvseeCommand extends Command {
                 } else if(target.equals(sender)) {
                     sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Du kannst diesen Command nicht auf dir selbst anwenden!");
                 } else {
-                    ChestFakeInventory ec = new ChestFakeInventory();
+                    ChestFakeInventory ec = new FakeInventories().createChestInventory();
+                    ec.setName("§l§c" + target.getName() + "§l§c`s §l§a Ec");
+                    ec.setContents(target.getEnderChestInventory().getContents());
                     ec.addListener(event -> {
                         event.setCancelled(true);
                     });
-                    ec.setName("§l§cEnderChest von §l§a" + target.getName());
-                    ec.setContents(target.getEnderChestInventory().getContents());
-                    ((Player) sender).addWindow(ec);
+                    ((Player)sender).addWindow(ec);
                 }
             }
         } else {

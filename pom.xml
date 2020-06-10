@@ -16,10 +16,9 @@
     <repositories>
         <repository>
             <id>nukkit-repo</id>
-            <url>https://repo.nukkit.com/snapshot/</url>
+            <url>https://repo.nukkitx.com/maven-snapshots</url>
         </repository>
     </repositories>
-
     <dependencies>
         <dependency>
             <groupId>cn.nukkit</groupId>
@@ -30,7 +29,7 @@
         <dependency>
             <groupId>com.nukkitx</groupId>
             <artifactId>fakeinventories</artifactId>
-            <version>1.0.3-SNAPSHOT</version>
+            <version>1.0.2-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

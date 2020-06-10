@@ -32,12 +32,12 @@ public class InvSeeCommand extends Command {
                 } else if(target.equals(sender)) {
                     sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Du kannst diesen Command nicht bei dir selber anwenden");
                 } else {
-                    DoubleChestFakeInventory inv = new DoubleChestFakeInventory();
+                    DoubleChestFakeInventory inv = new FakeInventories().createDoubleChestInventory();
                     inv.setContents(target.getInventory().getContents());
                     inv.addListener(event -> {
                         event.setCancelled(true);
                     });
-                    inv.setName("§l§cInventar von §l§a" + target.getName());
+                    inv.setName("§l§c" + target.getName() + "§l§c`s §l§aInv");
                     ((Player) sender).addWindow(inv);
                 }
             }
