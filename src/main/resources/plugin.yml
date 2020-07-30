@@ -1,4 +1,4 @@
-name: "invseeec"
+name: "invsee"
 main: de.nico.invsee.ec.main.Main
 version: 0.0.1
 api: ["1.0.0"]

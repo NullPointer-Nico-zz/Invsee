@@ -10,7 +10,7 @@ import com.nukkitx.fakeinventories.inventory.FakeInventories;
 public class EnderInvseeCommand extends Command {
 
     public EnderInvseeCommand() {
-        super("inve", "Zeigt dir die Ec eines Spielers an!", "§l§cInvsee §l§7| §l§4/inve <Spieler>");
+        super("inve", "Zeigt dir die Ec eines Spielers an!", "§l§cInvsee §l§7| §l§4/inve <Spieler>", new String[]{"invseeender"});
     }
 
     @Override
