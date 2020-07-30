@@ -8,9 +8,7 @@ import de.nico.invsee.ec.commands.InvSeeCommand;
 public class Main extends PluginBase {
     @Override
     public void onEnable() {
-        this.getServer().getCommandMap().register("ec", new ECCommand());
         this.getServer().getCommandMap().register("inve", new EnderInvseeCommand());
         this.getServer().getCommandMap().register("ivn", new InvSeeCommand());
-        this.getServer().getPluginManager().registerEvents(new ECCommand(), this);
     }
 }

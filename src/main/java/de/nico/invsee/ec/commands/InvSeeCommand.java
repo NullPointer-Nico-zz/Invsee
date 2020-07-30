@@ -12,7 +12,7 @@ import com.nukkitx.fakeinventories.inventory.FakeInventory;
 
 public class InvSeeCommand extends Command {
     public InvSeeCommand() {
-        super("inv", "Zeigt dir das inventar eines anderen Spielers an!", "§l§cFaiv§l§agames §l§7| §l§4/inv <Spieler>", new String[]{"invsee"});
+        super("inv", "Zeigt dir das inventar eines anderen Spielers an!", "§l§cInvsee §l§7| §l§4/inv <Spieler>", new String[]{"invsee"});
     }
 
     @Override
@@ -27,10 +27,10 @@ public class InvSeeCommand extends Command {
                 Player target = Server.getInstance().getPlayer(args[0]);
 
                 if(target == null) {
-                    sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Der Spieler ist nicht online oder existiert nicht!");
+                    sender.sendMessage("§l§cInvsee §l§7| §l§4Der Spieler ist nicht online oder existiert nicht!");
                     return true;
                 } else if(target.equals(sender)) {
-                    sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Du kannst diesen Command nicht bei dir selber anwenden");
+                    sender.sendMessage("§l§cInvsee §l§7| §l§4Du kannst diesen Command nicht bei dir selber anwenden");
                 } else {
                     DoubleChestFakeInventory inv = new FakeInventories().createDoubleChestInventory();
                     inv.setContents(target.getInventory().getContents());
@@ -42,7 +42,7 @@ public class InvSeeCommand extends Command {
                 }
             }
         } else {
-            sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4/inv <Spieler>");
+            sender.sendMessage("§l§cInvsee §l§7| §l§4/inv <Spieler>");
         }
         return true;
     }

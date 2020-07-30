@@ -10,7 +10,7 @@ import com.nukkitx.fakeinventories.inventory.FakeInventories;
 public class EnderInvseeCommand extends Command {
 
     public EnderInvseeCommand() {
-        super("inve", "Zeigt dir die Ec eines Spielers an!", "§l§cFaiv§l§agames §l§7| §l§4/inve <Spieler>");
+        super("inve", "Zeigt dir die Ec eines Spielers an!", "§l§cInvsee §l§7| §l§4/inve <Spieler>");
     }
 
     @Override
@@ -25,9 +25,9 @@ public class EnderInvseeCommand extends Command {
                 Player target = Server.getInstance().getPlayer(args[0]);
 
                 if(target == null) {
-                    sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Der Spieler ist nicht Online oder Existiert nicht!");
+                    sender.sendMessage("§l§cInvsee §l§7| §l§4Der Spieler ist nicht Online oder Existiert nicht!");
                 } else if(target.equals(sender)) {
-                    sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4Du kannst diesen Command nicht auf dir selbst anwenden!");
+                    sender.sendMessage("§l§cInvsee §l§7| §l§4Du kannst diesen Command nicht auf dir selbst anwenden!");
                 } else {
                     ChestFakeInventory ec = new FakeInventories().createChestInventory();
                     ec.setName("§l§c" + target.getName() + "§l§c`s §l§a Ec");
@@ -39,7 +39,7 @@ public class EnderInvseeCommand extends Command {
                 }
             }
         } else {
-            sender.sendMessage("§l§cFaiv§l§agames §l§7| §l§4/inve <Spieler>");
+            sender.sendMessage("§l§cInvsee §l§7| §l§4/inve <Spieler>");
         }
         return false;
     }
